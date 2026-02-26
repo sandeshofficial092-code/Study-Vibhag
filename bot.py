@@ -33,7 +33,7 @@ from telegram.error import BadRequest, Forbidden, TelegramError
 # CONFIGURATION
 # ==============================================================================
 # ⚠️ REPLACE WITH YOUR TOKEN
-BOT_TOKEN = "8601403591:AAE2fhk7OkpCarbtHCnjy1il4uSDAdoOXeU" 
+BOT_TOKEN = "7830067873:AAH0R3FtsRR0wHmqC0nY2dXhu-yLx14h5lc" 
 
 # ⚠️ REPLACE WITH YOUR ADMIN IDs
 ADMIN_IDS = [8344443883] 
@@ -245,9 +245,9 @@ async def process_payload(update: Update, context: ContextTypes.DEFAULT_TYPE, ba
     if missing:
         buttons = []
         for title, link in missing:
-            buttons.append([InlineKeyboardButton(f"➕ ᴊᴏɪɴ {title}", url=link)])
+            buttons.append([InlineKeyboardButton(f" ᴊᴏɪɴ {title}", url=link)])
         
-        buttons.append([InlineKeyboardButton("🟢 ᴠᴇʀɪꜰʏ", callback_data="verify_join")])
+        buttons.append([InlineKeyboardButton("ᴠᴇʀɪꜰʏ", callback_data="verify_join")])
         context.user_data['pending_batch'] = batch_id
         
         # New Force Join Message Design
@@ -383,11 +383,11 @@ async def show_admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "<i>ᴘʟᴇᴀꜱᴇ ꜱᴇʟᴇᴄᴛ ᴀɴ ᴏᴘᴛɪᴏɴ ʙᴇʟᴏᴡ:</i>"
     )
     keyboard = [
-        [InlineKeyboardButton("📂 ᴄʀᴇᴀᴛᴇ ꜰɪʟᴇ ʟɪɴᴋ", callback_data="admin_create_link")],
-        [InlineKeyboardButton("📡 ʙʀᴏᴀᴅᴄᴀꜱᴛ / ꜰᴏʀᴇᴄᴀꜱᴛ", callback_data="broadcast_menu")],
-        [InlineKeyboardButton("➕ ᴀᴅᴅ ꜰᴏʀᴄᴇ ᴄʜᴀɴɴᴇʟ", callback_data="admin_add_force"),
-         InlineKeyboardButton("➖ ʀᴇᴍᴏᴠᴇ ᴄʜᴀɴɴᴇʟ", callback_data="admin_rem_channel")],
-        [InlineKeyboardButton("📊 ᴜꜱᴇʀ & ʟɪɴᴋ ꜱᴛᴀᴛꜱ", callback_data="admin_stats")]
+        [InlineKeyboardButton(" ᴄʀᴇᴀᴛᴇ ꜰɪʟᴇ ʟɪɴᴋ", callback_data="admin_create_link")],
+        [InlineKeyboardButton(" ʙʀᴏᴀᴅᴄᴀꜱᴛ / ꜰᴏʀᴇᴄᴀꜱᴛ", callback_data="broadcast_menu")],
+        [InlineKeyboardButton(" ᴀᴅᴅ ꜰᴏʀᴄᴇ ᴄʜᴀɴɴᴇʟ", callback_data="admin_add_force"),
+         InlineKeyboardButton(" ʀᴇᴍᴏᴠᴇ ᴄʜᴀɴɴᴇʟ", callback_data="admin_rem_channel")],
+        [InlineKeyboardButton(" ᴜꜱᴇʀ & ʟɪɴᴋ ꜱᴛᴀᴛꜱ", callback_data="admin_stats")]
     ]
     if update.callback_query:
         await update.callback_query.message.edit_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.HTML)
@@ -418,7 +418,7 @@ async def admin_add_force_fwd(update: Update, context: ContextTypes.DEFAULT_TYPE
     try:
         bot_member = await context.bot.get_chat_member(chat.id, context.bot.id)
         if bot_member.status != 'administrator':
-            await msg.reply_text("⚠️ ɪ ᴀᴍ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ᴛʜᴇʀᴇ! ᴘʟᴇᴀꜱᴇ ᴘʀᴏᴍᴏᴛᴇ ᴍᴇ ꜰɪʀꜱᴛ.")
+            await msg.reply_text("⚠️<b> ɪ ᴀᴍ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ᴛʜᴇʀᴇ! ᴘʟᴇᴀꜱᴇ ᴘʀᴏᴍᴏᴛᴇ ᴍᴇ ꜰɪʀꜱᴛ.</b>")
             return ADD_CHANNEL_FWD
     except:
         await msg.reply_text("⚠️ ᴇʀʀᴏʀ ᴀᴄᴄᴇꜱꜱɪɴɢ ᴄʜᴀɴɴᴇʟ.")
@@ -548,7 +548,7 @@ async def admin_create_link_save(update: Update, context: ContextTypes.DEFAULT_T
     bot_username = (await context.bot.get_me()).username
     link = f"https://t.me/{bot_username}?start={batch_id}"
     
-    prot_status = "ᴇɴᴀʙʟᴇᴅ 🔒" if is_protected else "ᴅɪꜱᴀʙʟᴇᴅ 🔓"
+    prot_status = "ᴇɴᴀʙʟᴇᴅ " if is_protected else "ᴅɪꜱᴀʙʟᴇᴅ "
     res_msg = (
         f"✅ <b>ꜰɪʟᴇ ʟɪɴᴋ ᴄʀᴇᴀᴛᴇᴅ!</b>\n\n"
         f"<b>ᴛᴏᴛᴀʟ ꜰɪʟᴇꜱ:</b> {len(files)}\n"
