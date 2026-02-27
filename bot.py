@@ -1,24 +1,5 @@
-# 1️⃣ imports (TOOP)
-from aiohttp import web
-import os
-import asyncio
 
-# 2️⃣ home function (YES, yahi jagah)
-async def home(request):
-    return web.Response(text="Bot is running")
-
-# 3️⃣ web app + route
-app = web.Application()
-app.router.add_get("/", home)
-
-# 4️⃣ yaha tumhara Telegram bot code aata hai
-# (pyrogram / python-telegram-bot etc.)
-
-# 5️⃣ last me web server run
-port = int(os.environ.get("PORT", 8080))
-web.run_app(app, host="0.0.0.0", port=port)
-"""
-🚀 Clean & Beautiful File Sharing Bot (Unicode Edition)
+"""🚀 Clean & Beautiful File Sharing Bot (Unicode Edition)
 Features: Stunning UI, Force Join (Req + Join), File Batching, Fast Broadcast, Stats, Auto-Delete & Forward Protect
 """
 
